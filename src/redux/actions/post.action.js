@@ -15,3 +15,7 @@ export function todoDelete(id) {
 export function todoUpdate(data) {
     return { type: types.UPDATE_TODO, data }
 }
+
+export function setFilter(filter) {
+    return { type: types.SET_FILTER, filter }
+}

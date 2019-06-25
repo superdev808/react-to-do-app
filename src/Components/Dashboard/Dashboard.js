@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from "react-router-dom"
 
-import ModalDialog from '../ModalDialog/ModalDialog'
-import * as postActions from '../../redux/actions/post.action'
+import {
+   todoFinish,
+   todoDelete,
+   setFilter
+} from '../../redux/actions/post.action'
+
 import { getVisibleTodos } from '../../redux/selectors'
 import TodoRow from '../TodoRow/TodoRow'
 
@@ -12,7 +16,9 @@ import './Dashboard.css'
 
 class Dashboard extends Component {
 
-   setFilter = (visibleType) => {
+   setVisibleType = (visibleType) => {
+      const { setFilter } = this.props.actions
+      setFilter(visibleType)
    }
 
    handleFinish = (taskId) => {
@@ -60,9 +66,9 @@ class Dashboard extends Component {
 
             <div className={'row'}>
                <div className={"filter"}>
-                  <button onClick={() => this.setFilter('all')} className={filter === 'all' ? "active" : ""} > All </button>
-                  <button onClick={() => this.setFilter('active')} className={filter === 'active' ? "active" : ""}> Active </button>
-                  <button onClick={() => this.setFilter('finished')} className={filter === 'finished' ? "active" : ""}> Finished </button>
+                  <button onClick={() => this.setVisibleType('SHOW_ALL')} className={filter === 'all' ? "active" : ""} > All </button>
+                  <button onClick={() => this.setVisibleType('SHOW_ACTIVE')} className={filter === 'active' ? "active" : ""}> Active </button>
+                  <button onClick={() => this.setVisibleType('SHOW_FINISHED')} className={filter === 'finished' ? "active" : ""}> Finished </button>
                </div>
             </div>
          </div>
@@ -76,7 +82,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-   actions: bindActionCreators(postActions, dispatch),
+   actions: bindActionCreators(
+      {
+         todoFinish,
+         todoDelete,
+         setFilter
+      }, dispatch)
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard));

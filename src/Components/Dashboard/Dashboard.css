@@ -13,6 +13,7 @@
 	color: black;
 	max-width: 200px;
 	overflow: hidden;
+	width: 30%;
 }
 
 .data td a {

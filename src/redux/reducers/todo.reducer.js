@@ -53,6 +53,11 @@ const todoReducer = (state = initialState, action) => {
                     todos
                 }
             }
+        case types.SET_FILTER:
+            return {
+                ...state,
+                visibilityFilter: action.filter
+            }
         default:
             return state
     }

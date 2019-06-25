@@ -19,9 +19,6 @@ class TodoRow extends Component {
                     onClick={(e) => this.props.handleDelete(todo.id)}> delete
                 </button>
             </td>
-            <td>
-                {todo.id}
-            </td>
         </tr >)
     }
 }
