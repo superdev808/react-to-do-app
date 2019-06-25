@@ -19,6 +19,7 @@ class Dashboard extends Component {
 
     handleTask = (e, taskId) => {
         let actionName = e.target.id
+
         switch (actionName) {
             case "subscribe":
                 break;
