@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
-import { todoAdd } from '../../redux/actions/post.action'
+import { todoAdd } from '../../redux/actions/todo.action'
 
 
 import './post.css'

@@ -8,7 +8,7 @@ import {
    todoFinish,
    todoDelete,
    setFilter
-} from '../../redux/actions/post.action'
+} from '../../redux/actions/todo.action'
 
 import { getVisibleTodos } from '../../redux/selectors'
 import TodoRow from '../TodoRow/TodoRow'
@@ -32,9 +32,6 @@ class Dashboard extends Component {
          const { todoDelete } = this.props.actions
          todoDelete(taskId)
       }
-   }
-
-   handleTodoView = (taskId) => {
    }
 
    handleNew = (e) => {
