@@ -1,151 +1,150 @@
 .data {
-    border-collapse: collapse;
-    width: 100%;
-    color: black;
-    font-size: 15px;
+	border-collapse: collapse;
+	width: 100%;
+	color: black;
+	font-size: 15px;
 }
 
 .data th, td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	text-decoration: none;
+	color: black;
+	max-width: 200px;
+	overflow: hidden;
 }
 
-td a {
-    text-decoration: none;
-    color: black;
+.data td a {
+	text-decoration: none;
+	color: black;
 }
 
 .del_button {
-    background-color: rgb(100, 100, 30);
-    color: white;
-    padding: 12px 5px;
-    border: none;
-    cursor: pointer;
+	background-color: rgb(100, 200, 230);
+	color: white;
+	padding: 12px 15px;
+	border: none;
+	cursor: pointer;
 }
 
-.subscribe_button {
-    background-color: rgb(255, 100, 30);
-    color: white;
-    padding: 12px 5px;
-    border: none;
-    cursor: pointer;
+.finish_button {
+	background-color: rgb(255, 100, 30);
+	color: white;
+	padding: 12px 5px;
+	border: none;
+	cursor: pointer;
 }
 
 .create_button {
-    background-color: rgb(100, 30, 30);
-    color: white;
-    padding: 5px 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
+	background-color: rgb(100, 30, 30);
+	color: white;
+	padding: 5px 25px;
+	border: none;
+	cursor: pointer;
+	font-size: 15px;
 }
 
 .filter {
-    margin-top: 20px;
-    display: inline-block;
+	margin-top: 20px;
+	display: inline-block;
 }
 
 .filter button {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    width: 80px;
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	width: 80px;
 }
 
 .filter button.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
 }
 
 .filter button:hover:not(.active) {
-    background-color: #ddd;
+	background-color: #ddd;
 }
 
 .filter button:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 .filter button:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 .checkContainer {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	position: relative;
+	margin: auto;
+	cursor: pointer;
+	font-size: 22px;
+	user-select: none;
 }
 
 /* Hide the browser's default checkbox */
 
 .checkContainer input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
 }
 
 /* Create a custom checkbox */
 
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: rgb(63, 61, 61);
-    margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: rgb(63, 61, 61);
+	margin: auto;
 }
 
 /* On mouse-over, add a grey background color */
 
 .checkContainer:hover input~.checkmark {
-    background-color: #777;
+	background-color: #777;
 }
 
 /* When the checkbox is checked, add a blue background */
 
 .checkContainer input:checked~.checkmark {
-    background-color: #2196F3;
+	background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+	content: "";
+	position: absolute;
+	display: none;
 }
 
 /* Show the checkmark when checked */
 
 .checkContainer input:checked~.checkmark:after {
-    display: block;
+	display: block;
 }
 
 /* Style the checkmark/indicator */
 
 .checkContainer .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as postActions from '../../redux/actions/action.post'
+import * as postActions from '../../redux/actions/post.action'
 import { withRouter } from "react-router-dom"
 
 
