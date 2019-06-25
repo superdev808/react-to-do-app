@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postActions from '../../redux/actions/action.post'
+import { withRouter } from "react-router-dom"
 
 import './Dashboard.css'
 
@@ -19,15 +20,21 @@ class Dashboard extends Component {
 
     handleTask = (e, taskId) => {
         let actionName = e.target.id
+        const { actions } = this.props
 
         switch (actionName) {
             case "subscribe":
+                actions.postActive(taskId)
                 break;
             case "delete":
                 break;
             default:
                 break;
         }
+    }
+
+    handleNew = (e) => {
+        this.props.history.push("/new")
     }
 
     render() {
@@ -43,7 +50,11 @@ class Dashboard extends Component {
                                 <th> State </th>
                                 <th> Title </th>
                                 <th> Subscribe/Delete </th>
-                                <th> <button className={"create_button"}>New</button></th>
+                                <th>
+                                    <button className={"create_button"} onClick={this.handleNew} >
+                                        New
+                                    </button>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,12 +65,12 @@ class Dashboard extends Component {
                                         (filter === 'active' && !post.finish) ||
                                         (filter === 'finished' && post.finish)) &&
                                     <tr key={post.id}>
-                                        <td><input type="checkbox" disabled defaultChecked={post.finish} /></td>
+                                        <td><input type="checkbox" readOnly checked={post.finish} /></td>
                                         <td><a href={"/edit/" + post.id} >{post.title}</a></td>
                                         <td>
                                             <button id={"subscribe"}
                                                 className={"subscribe_button"}
-                                                onClick={(e) => this.handleTask(e, post.id)} > subscribe
+                                                onClick={(e) => this.handleTask(e, post.id)} > {!post.finish ? "subscribe" : "unsubscribe"}
                                             </button>
 
                                             <button id={"delete"}
@@ -95,4 +106,4 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(postActions, dispatch),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard));

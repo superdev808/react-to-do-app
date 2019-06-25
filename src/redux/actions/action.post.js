@@ -8,10 +8,6 @@ export function postActive(id) {
     return { type: types.ACTIVE_POST, id }
 }
 
-export function postUnactive(id) {
-    return { type: types.UNACTIVE_POST, id }
-}
-
 export function postDelete(id) {
     return { type: types.DELETE_POST, id }
 }

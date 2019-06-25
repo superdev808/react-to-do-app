@@ -15,16 +15,10 @@ const postReducer = (state = initState, action) => {
         case types.ACTIVE_POST:
             {
                 let posts = state.posts
-                posts.map((post) => post.id === action.id ? { ...post, finish: true } : post)
-                return {
-                    ...state,
-                    posts
-                }
-            }
-        case types.UNACTIVE_POST:
-            {
-                let posts = state.posts
-                posts.map((post) => post.id === action.id ? { ...post, finish: false } : post)
+                posts = posts.map((post) => {
+                    return post.id === action.id ? { ...post, finish: !post.finish } : post
+                })
+
                 return {
                     ...state,
                     posts
