@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { withRouter } from "react-router-dom"
+import { withRouter } from 'react-router-dom'
+import classNames from 'classnames'
 
 import {
    todoFinish,
@@ -22,6 +23,8 @@ class Dashboard extends Component {
    }
 
    handleFinish = (taskId) => {
+      const { todoFinish } = this.props.actions
+      todoFinish(taskId)
    }
 
    handleDelete = (taskId) => {
@@ -31,23 +34,23 @@ class Dashboard extends Component {
    }
 
    handleNew = (e) => {
-      this.props.history.push("/new")
+      this.props.history.push('/new')
    }
 
    render() {
       const { visibleTodos, filter } = this.props
 
       return (
-         <div className="container">
+         <div className='container'>
             <div className='row'>
-               <table className="data">
+               <table className='data'>
                   <thead>
                      <tr>
                         <th> State </th>
                         <th> Title </th>
                         <th> Subscribe/Delete </th>
                         <th>
-                           <button className={"create_button"} onClick={this.handleNew} >
+                           <button className='create_button' onClick={this.handleNew} >
                               New
                                     </button>
                         </th>
@@ -65,10 +68,10 @@ class Dashboard extends Component {
             </div>
 
             <div className={'row'}>
-               <div className={"filter"}>
-                  <button onClick={() => this.setVisibleType('SHOW_ALL')} className={filter === 'all' ? "active" : ""} > All </button>
-                  <button onClick={() => this.setVisibleType('SHOW_ACTIVE')} className={filter === 'active' ? "active" : ""}> Active </button>
-                  <button onClick={() => this.setVisibleType('SHOW_FINISHED')} className={filter === 'finished' ? "active" : ""}> Finished </button>
+               <div className={'filter'}>
+                  <button onClick={() => this.setVisibleType('SHOW_ALL')} className={classNames({ 'active': filter === 'SHOW_ALL' })} > All </button>
+                  <button onClick={() => this.setVisibleType('SHOW_ACTIVE')} className={classNames({ 'active': filter === 'SHOW_ACTIVE' })}> Active </button>
+                  <button onClick={() => this.setVisibleType('SHOW_FINISHED')} className={classNames({ 'active': filter === 'SHOW_FINISHED' })}> Finished </button>
                </div>
             </div>
          </div>
@@ -78,7 +81,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
    visibleTodos: getVisibleTodos(state),
-   filter: state.filter
+   filter: state.visibilityFilter
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -90,4 +93,4 @@ const mapDispatchToProps = dispatch => ({
       }, dispatch)
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard))

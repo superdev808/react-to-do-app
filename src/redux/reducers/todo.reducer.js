@@ -2,8 +2,8 @@ import * as types from '../constants'
 
 const initialState = {
     todos: [
-        { id: 0, title: "1", content: "2", finished: false },
-        { id: 1, title: "asdf", content: "asdfasdf", finished: false }
+        { id: 0, title: '1', content: '2', finished: false },
+        { id: 1, title: 'asdf', content: 'asdfasdf', finished: false }
     ],
     curCnt: 2,
     visibilityFilter: 'SHOW_ALL'

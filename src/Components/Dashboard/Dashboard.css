@@ -21,6 +21,10 @@
 	color: black;
 }
 
+.finish {
+	text-decoration: line-through;
+}
+
 .del_button {
 	background-color: rgb(100, 200, 230);
 	color: white;
