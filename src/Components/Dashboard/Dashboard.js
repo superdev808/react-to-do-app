@@ -3,13 +3,36 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postActions from '../../redux/actions/action.post'
 import { withRouter } from "react-router-dom"
+import ModalDialog from '../ModalDialog/ModalDialog'
 
 import './Dashboard.css'
 
 class Dashboard extends Component {
 
     state = {
-        filter: 'all'
+        filter: 'all',
+        currentPost: null
+    }
+
+    modalEvent = (e) => {
+        const { currentPost } = this.state
+        const { actions } = this.props
+
+        switch (e.target.id) {
+            case "close": case "Cancel":
+                this.setState({
+                    currentPost: null
+                })
+                break;
+            case "OK":
+                actions.postDelete(currentPost.id)
+                this.setState({
+                    currentPost: null
+                })
+                break;
+            default:
+                break;
+        }
     }
 
     handleFilter = (e) => {
@@ -27,6 +50,9 @@ class Dashboard extends Component {
                 actions.postActive(taskId)
                 break;
             case "delete":
+                this.setState({
+                    currentPost: taskId
+                })
                 break;
             default:
                 break;
@@ -39,7 +65,7 @@ class Dashboard extends Component {
 
     render() {
         const { posts } = this.props
-        const { filter } = this.state
+        const { filter, currentPost } = this.state
 
         return (
             <div className={"container"}>
@@ -75,7 +101,7 @@ class Dashboard extends Component {
 
                                             <button id={"delete"}
                                                 className={"del_button"}
-                                                onClick={(e) => this.handleTask(e, post.id)}> delete
+                                                onClick={(e) => this.handleTask(e, post)}> delete
                                             </button>
                                         </td>
                                     </tr>
@@ -92,6 +118,8 @@ class Dashboard extends Component {
                         <button id={'finished'} onClick={this.handleFilter} className={filter === 'finished' ? "active" : ""}> Finished </button>
                     </div>
                 </div>
+
+                <ModalDialog currentPost={currentPost} modalEvent={this.modalEvent} />
 
             </div>
         );

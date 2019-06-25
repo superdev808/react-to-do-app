@@ -11,3 +11,7 @@ export function postActive(id) {
 export function postDelete(id) {
     return { type: types.DELETE_POST, id }
 }
+
+export function postUpdate(data) {
+    return { types: types.UPDATE_POST, data }
+}

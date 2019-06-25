@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes'
 const initState = {
     posts: [
-        { id: new Date(), title: "1", content: "2", finish: false }
+        { id: (new Date()).toString(), title: "1", content: "2", finish: false }
     ]
 }
 
@@ -27,7 +27,19 @@ const postReducer = (state = initState, action) => {
         case types.DELETE_POST:
             {
                 let posts = state.posts
-                posts.filter((post) => post && post.id !== action.id)
+                posts = posts.filter((post) => post && post.id !== action.id)
+                return {
+                    ...state,
+                    posts
+                }
+            }
+        case types.UPDATE_POST:
+            {
+                let posts = state.posts
+                posts = posts.map((post) => {
+                    return post.id === action.data.id ? { ...post, title: action.data.title, content: action.data.content, finish: action.data.finish } : post
+                })
+
                 return {
                     ...state,
                     posts

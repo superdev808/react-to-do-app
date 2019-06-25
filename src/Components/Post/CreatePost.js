@@ -27,18 +27,15 @@ class CreatePost extends Component {
         e.preventDefault()
 
         actions.postAppend({
-            id: new Date(),
-            title: this.state.title,
-            content: this.state.content
+            id: (new Date()).toString(),
+            title: this.getTitle.value,
+            content: this.getContent.value
         })
+
+        this.getContent.value = ""
+        this.getTitle.value = ""
 
         this.props.history.push("/")
-    }
-
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
     }
 
     render() {
@@ -50,7 +47,7 @@ class CreatePost extends Component {
                             <label htmlFor="fname">Title</label>
                         </div>
                         <div className="col-75">
-                            <input type="text" id="title" name="firstname" placeholder="Post Title.." onChange={this.handleChange} />
+                            <input type="text" id="title" name="firstname" placeholder="Post Title.." ref={(input) => this.getTitle = input} />
                         </div>
                     </div>
                     <div className="row">
@@ -58,7 +55,7 @@ class CreatePost extends Component {
                             <label htmlFor="subject">Decription</label>
                         </div>
                         <div className="col-75">
-                            <textarea id="content" name="content" placeholder="Description.." style={{ height: "200px" }} onChange={this.handleChange}></textarea>
+                            <textarea id="content" name="content" placeholder="Description.." style={{ height: "200px" }} ref={(input) => this.getContent = input}></textarea>
                         </div>
                     </div>
                     <div className="row">
