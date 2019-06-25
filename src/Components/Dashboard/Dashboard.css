@@ -1,0 +1,76 @@
+.data {
+    border-collapse: collapse;
+    width: 100%;
+    color: black;
+    font-size: 15px;
+}
+
+.data th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+td a {
+    text-decoration: none;
+    color: black;
+}
+
+.del_button {
+    background-color: rgb(100, 100, 30);
+    color: white;
+    padding: 12px 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.subscribe_button {
+    background-color: rgb(255, 100, 30);
+    color: white;
+    padding: 12px 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.create_button {
+    background-color: rgb(100, 30, 30);
+    color: white;
+    padding: 5px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.filter {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.filter button {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    width: 80px;
+}
+
+.filter button.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.filter button:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.filter button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.filter button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

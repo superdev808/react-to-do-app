@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postActions from '../../redux/actions/action.post'
+import { withRouter } from "react-router-dom"
+
 
 import './post.css'
 
 class CreatePost extends Component {
 
     state = {
+        id: '',
         title: '',
-        content: ''
+        content: '',
+        finish: false
     }
 
     handleCancel = () => {
-        const { posts } = this.props
-        console.log(posts)
+        this.props.history.push("/")
     }
 
     handleSubmit = (e) => {
@@ -24,9 +27,12 @@ class CreatePost extends Component {
         e.preventDefault()
 
         actions.postAppend({
+            id: new Date(),
             title: this.state.title,
             content: this.state.content
         })
+
+        this.props.history.push("/")
     }
 
     handleChange = (e) => {
@@ -73,4 +79,4 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(postActions, dispatch),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));

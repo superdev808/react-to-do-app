@@ -1,6 +1,6 @@
 const initState = {
     posts: [
-        { title: "1", content: "2" }
+        { id: new Date(), title: "1", content: "2", finish: false }
     ]
 }
 
