@@ -28,6 +28,10 @@ class Dashboard extends Component {
    }
 
    handleDelete = (taskId) => {
+      if (window.confirm("Are you sure to delete?") === true) {
+         const { todoDelete } = this.props.actions
+         todoDelete(taskId)
+      }
    }
 
    handleTodoView = (taskId) => {
