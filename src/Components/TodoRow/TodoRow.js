@@ -14,7 +14,7 @@ class TodoRow extends Component {
                     <span className='checkmark'></span>
                 </label>
             </td>
-            <td><Link to={'/update/' + todo.id}><p className={classNames({ "finish": todo.finished })}>{todo.title}</p></Link></td>
+            <td><Link to={'/update/' + todo.id}><p className={classNames({ 'finish': todo.finished })}>{todo.title}</p></Link></td>
             <td>
                 <button className='del_button'
                     onClick={(e) => this.props.handleDelete(todo.id)}> delete
