@@ -2,82 +2,57 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postActions from '../../redux/actions/action.post'
-import { withRouter } from 'react-router-dom'
-
-
-import './post.css'
+import { withRouter } from "react-router-dom"
 
 class PostDetails extends Component {
 
     constructor(props) {
         super(props)
-
-        let id = props.match.params.id
+        const id = props.match.params.id
         const { posts } = props
-        console.log(">>posts", posts)
-
-        let findData = posts.find((post) => {
-            console.log(post.id)
-            console.log(">>", id)
-            return post.id === id
-        })
-        console.log(findData)
-
-        this.state = { data: findData, title: '', content: '' }
-    }
-
-    handleCancel = () => {
-        this.props.history.push('/')
+        this.findData = posts.find((post) => (post.id === Number.parseInt(id)))
     }
 
     handleSubmit = (e) => {
-
-        const { actions } = this.props
-        const id = this.props.match.params.id
         e.preventDefault()
+        const { actions } = this.props
+        console.log(actions)
 
         actions.postUpdate({
-            ...this.state.findData,
-            id,
-            title: this.state.title,
-            content: this.state.content
+            ...this.findData,
+            title: this.getTitle.value,
+            content: this.getContent.value
         })
 
-        this.props.history.push('/')
-    }
-
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+        this.props.history.push("/")
     }
 
     render() {
-        const { findData } = this.state
+
         return (
             <div>
                 {
-                    findData && <div className='container'>
+                    this.findData && <div className="container">
                         <form onSubmit={this.handleSubmit}>
-                            <div className='row'>
-                                <div className='col-25'>
-                                    <label htmlFor='fname'>Title</label>
+                            <div className="row">
+                                <div className="col-25">
+                                    <label htmlFor="fname">Title</label>
                                 </div>
-                                <div className='col-75'>
-                                    <input type='text' id='title' name='title' onChange={this.handleChange} defaultValue={findData.title} />
-                                </div>
-                            </div>
-                            <div className='row'>
-                                <div className='col-25'>
-                                    <label htmlFor='subject'>Decription</label>
-                                </div>
-                                <div className='col-75'>
-                                    <textarea id='content' name='content' style={{ height: '200px' }} onChange={this.handleChange} defaultValue={findData.content}></textarea>
+                                <div className="col-75">
+                                    <input type="text" id="title" name="title" defaultValue={this.findData.title} ref={(input) => this.getTitle = input} />
                                 </div>
                             </div>
-                            <div className='row'>
-                                <button className='cancel_button' onClick={this.handleCancel}> Back </button>
-                                <input type='submit' value='Save' />
+                            <div className="row">
+                                <div className="col-25">
+                                    <label htmlFor="subject">Decription</label>
+                                </div>
+                                <div className="col-75">
+                                    <textarea id="content" name="content" defaultValue={this.findData.content} style={{ height: "200px" }} ref={(input) => this.getContent = input}></textarea>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <button className="cancel_button" onClick={this.handleCancel}> Back </button>
+                                <input type="submit" value="Save" />
                             </div>
                         </form>
                     </div >

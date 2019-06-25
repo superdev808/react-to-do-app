@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postActions from '../../redux/actions/action.post'
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import ModalDialog from '../ModalDialog/ModalDialog'
 
 import './Dashboard.css'
@@ -85,14 +85,19 @@ class Dashboard extends Component {
                         </thead>
                         <tbody>
                             {
-                                posts.map((post) => (
+                                posts && posts.map((post) => (
                                     post &&
                                     (filter === 'all' ||
                                         (filter === 'active' && !post.finish) ||
                                         (filter === 'finished' && post.finish)) &&
                                     <tr key={post.id}>
-                                        <td><input type="checkbox" readOnly checked={post.finish} /></td>
-                                        <td><a href={"/edit/" + post.id} >{post.title}</a></td>
+                                        <td>
+                                            <label className="checkContainer">
+                                                <input type="checkbox" disabled checked={post.finish} />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td><Link to={"/update/" + post.id} >{post.title}</Link></td>
                                         <td>
                                             <button id={"subscribe"}
                                                 className={"subscribe_button"}

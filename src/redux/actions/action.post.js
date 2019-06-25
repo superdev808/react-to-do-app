@@ -13,5 +13,5 @@ export function postDelete(id) {
 }
 
 export function postUpdate(data) {
-    return { types: types.UPDATE_POST, data }
+    return { type: types.UPDATE_POST, data }
 }

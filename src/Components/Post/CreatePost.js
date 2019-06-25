@@ -23,11 +23,9 @@ class CreatePost extends Component {
     handleSubmit = (e) => {
 
         const { actions } = this.props
-
         e.preventDefault()
 
         actions.postAppend({
-            id: (new Date()).toString(),
             title: this.getTitle.value,
             content: this.getContent.value
         })

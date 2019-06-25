@@ -1,8 +1,10 @@
 import * as types from '../actions/actionTypes'
 const initState = {
     posts: [
-        { id: (new Date()).toString(), title: "1", content: "2", finish: false }
-    ]
+        { id: 0, title: "1", content: "2", finish: false },
+        { id: 1, title: "asdssddsd", content: "asdfasdf", finish: false }
+    ],
+    curCnt: 2
 }
 
 const postReducer = (state = initState, action) => {
@@ -10,7 +12,11 @@ const postReducer = (state = initState, action) => {
         case types.ADD_POST:
             return {
                 ...state,
-                posts: state.posts.concat(action.data)
+                posts: state.posts.concat({
+                    ...action.data,
+                    id: state.curCnt
+                }),
+                curCnt: state.curCnt + 1
             }
         case types.ACTIVE_POST:
             {
@@ -46,7 +52,7 @@ const postReducer = (state = initState, action) => {
                 }
             }
         default:
-            return state
+            return { ...state }
     }
 }
 

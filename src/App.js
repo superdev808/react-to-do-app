@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import Dashboard from './Components/Dashboard/Dashboard'
 import CreatePost from './Components/Post/CreatePost'
 import { createBrowserHistory } from 'history';
@@ -14,9 +14,11 @@ class App extends Component {
         <Router history={history}>
           <div className="app" >
             <h2> React Todo App </h2>
-            <Route path='/' exact component={Dashboard} />
-            <Route path="/new" component={CreatePost} />
-            <Route path="/edit/:id" component={PostDetails} />
+            <Switch>
+              <Route exact path='/' component={Dashboard} />
+              <Route path="/new" component={CreatePost} />
+              <Route path="/update/:id" component={PostDetails} />
+            </Switch>
           </div>
         </Router>
       </div>
