@@ -1,25 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classNames from 'classnames'
 
 import {
    finishTodo,
    deleteTodo,
-   setFilter
 } from '../../redux/actions/todo.action'
 
 import { getVisibleTodos } from '../../redux/selectors'
 import TodoRow from '../TodoRow/TodoRow'
-
+import TodoFilter from '../TodoFilter/TodoFilter'
 import './Dashboard.css'
 
 class Dashboard extends Component {
-
-   setVisibleType = (visibleType) => {
-      const { setFilter } = this.props.actions
-      setFilter(visibleType)
-   }
 
    handleFinish = (taskId) => {
       const { finishTodo } = this.props.actions
@@ -34,12 +27,11 @@ class Dashboard extends Component {
    }
 
    handleNew = (e) => {
-      console.log('handleNew', this)
       this.props.history.push('/new')
    }
 
    render() {
-      const { visibleTodos, filter } = this.props
+      const { visibleTodos } = this.props
 
       return (
          <div className='container'>
@@ -67,14 +59,7 @@ class Dashboard extends Component {
                   </tbody>
                </table>
             </div>
-
-            <div className={'row'}>
-               <div className={'filter'}>
-                  <button onClick={() => this.setVisibleType('SHOW_ALL')} className={classNames({ 'active': filter === 'SHOW_ALL' })} > All </button>
-                  <button onClick={() => this.setVisibleType('SHOW_ACTIVE')} className={classNames({ 'active': filter === 'SHOW_ACTIVE' })}> Active </button>
-                  <button onClick={() => this.setVisibleType('SHOW_FINISHED')} className={classNames({ 'active': filter === 'SHOW_FINISHED' })}> Finished </button>
-               </div>
-            </div>
+            <TodoFilter />
          </div>
       );
    }
@@ -89,8 +74,7 @@ const mapDispatchToProps = dispatch => ({
    actions: bindActionCreators(
       {
          finishTodo,
-         deleteTodo,
-         setFilter
+         deleteTodo
       }, dispatch)
 })
 

@@ -2,10 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
-const TodoRow = ({ todo, handleFinish, handleDelete, history }) => {
-
-    console.log('TodoRow', history)
-
+const TodoRow = ({ todo, handleFinish, handleDelete }) => {
     return (<tr className='data'>
         <td>
             <label className='checkContainer'>
