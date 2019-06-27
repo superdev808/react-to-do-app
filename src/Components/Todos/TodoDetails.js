@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
-import { todoUpdate } from '../../redux/actions/todo.action'
+import { updateTodo } from '../../redux/actions/todo.action'
 
 class TodoDetails extends Component {
 
@@ -16,9 +16,9 @@ class TodoDetails extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const { todoUpdate } = this.props.actions
+        const { updateTodo } = this.props.actions
 
-        todoUpdate({
+        updateTodo({
             ...this.findData,
             title: this.getTitle.value,
             content: this.getContent.value
@@ -67,7 +67,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
-        todoUpdate
+        updateTodo
     }, dispatch),
 })
 

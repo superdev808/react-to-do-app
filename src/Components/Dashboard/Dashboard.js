@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux'
 import classNames from 'classnames'
 
 import {
-   todoFinish,
-   todoDelete,
+   finishTodo,
+   deleteTodo,
    setFilter
 } from '../../redux/actions/todo.action'
 
@@ -22,14 +22,14 @@ class Dashboard extends Component {
    }
 
    handleFinish = (taskId) => {
-      const { todoFinish } = this.props.actions
-      todoFinish(taskId)
+      const { finishTodo } = this.props.actions
+      finishTodo(taskId)
    }
 
    handleDelete = (taskId) => {
       if (window.confirm('Are you sure to delete?') === true) {
-         const { todoDelete } = this.props.actions
-         todoDelete(taskId)
+         const { deleteTodo } = this.props.actions
+         deleteTodo(taskId)
       }
    }
 
@@ -88,8 +88,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
    actions: bindActionCreators(
       {
-         todoFinish,
-         todoDelete,
+         finishTodo,
+         deleteTodo,
          setFilter
       }, dispatch)
 })
