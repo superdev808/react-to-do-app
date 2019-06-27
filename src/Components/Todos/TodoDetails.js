@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 import { todoUpdate } from '../../redux/actions/todo.action'
 
-class PostDetails extends Component {
+class TodoDetails extends Component {
 
     constructor(props) {
         super(props)
@@ -71,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
     }, dispatch),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostDetails));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TodoDetails));

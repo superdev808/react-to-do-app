@@ -6,9 +6,9 @@ import { withRouter } from 'react-router-dom'
 import { todoAdd } from '../../redux/actions/todo.action'
 
 
-import './post.css'
+import './todo.css'
 
-class CreatePost extends Component {
+class CreateTodo extends Component {
 
     state = {
         id: '',
@@ -77,4 +77,4 @@ const mapDispatchToProps = dispatch => ({
     }, dispatch),
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateTodo));

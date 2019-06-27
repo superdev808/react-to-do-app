@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
 
 import {
@@ -35,6 +34,7 @@ class Dashboard extends Component {
    }
 
    handleNew = (e) => {
+      console.log('handleNew', this)
       this.props.history.push('/new')
    }
 
@@ -61,7 +61,7 @@ class Dashboard extends Component {
                   <tbody>
                      {
                         visibleTodos && visibleTodos.map((todo) => (
-                           todo && <TodoRow key={todo.id} todo={todo} handleFinish={this.handleFinish} handleDelete={this.handleDelete} />
+                           <TodoRow key={todo.id} todo={todo} handleFinish={this.handleFinish} handleDelete={this.handleDelete} />
                         ))
                      }
                   </tbody>
@@ -82,7 +82,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
    visibleTodos: getVisibleTodos(state),
-   filter: state.visibilityFilter
+   // filter: state.visibilityFilter
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -94,4 +94,4 @@ const mapDispatchToProps = dispatch => ({
       }, dispatch)
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard))
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

@@ -44,8 +44,13 @@ const todoReducer = (state = initialState, action) => {
         case types.UPDATE_TODO:
             {
                 let todos = state.todos
-                todos = todos.map((post) => {
-                    return post.id === action.data.id ? { ...post, title: action.data.title, content: action.data.content, finish: action.data.finish } : post
+                todos = todos.map((todo) => {
+                    return todo.id === action.data.id ? {
+                        ...todo,
+                        title: action.data.title,
+                        content: action.data.content,
+                        finished: action.data.finished
+                    } : todo
                 })
 
                 return {

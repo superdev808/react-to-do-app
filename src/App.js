@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './Components/Dashboard/Dashboard'
-import CreatePost from './Components/Post/CreatePost'
+import CreateTodo from './Components/Todos/CreateTodo'
 import { createBrowserHistory } from 'history';
-import PostDetails from './Components/Post/PostDetails';
+import PostDetails from './Components/Todos/TodoDetails';
 
 const history = createBrowserHistory()
 
@@ -16,7 +16,7 @@ class App extends Component {
             <h2> React Todo App </h2>
             <Switch>
               <Route exact path='/' component={Dashboard} />
-              <Route path='/new' component={CreatePost} />
+              <Route path='/new' component={CreateTodo} />
               <Route path='/update/:id' component={PostDetails} />
             </Switch>
           </div>
