@@ -5,26 +5,34 @@ import { withRouter } from 'react-router-dom'
 
 import { addTodo } from '../../redux/actions/todo.action'
 
-
-import './todo.css'
+import './todo.scss'
+//import { thisExpression } from '@babel/types';
 
 class CreateTodo extends Component {
 
     state = {
-        id: '',
         title: '',
-        content: '',
-        finish: false
+        titleFocused: true
     }
 
     handleCancel = () => {
         this.props.history.push('/')
     }
 
+    handleTitleChange = () => {
+        this.setState({
+            title: this.getTitle.value
+        })
+    }
+
     handleSubmit = (e) => {
 
-        const { addTodo } = this.props.actions
         e.preventDefault()
+
+        if (!this.getTitle.value)
+            return
+
+        const { addTodo } = this.props.actions
 
         addTodo({
             title: this.getTitle.value,
@@ -33,11 +41,25 @@ class CreateTodo extends Component {
 
         this.getContent.value = ''
         this.getTitle.value = ''
-
         this.props.history.push('/')
     }
 
+    onFocusTitle = () => {
+        this.setState({
+            titleFocused: true
+        })
+    }
+
+    onBlurTitle = () => {
+        this.setState({
+            titleFocused: false
+        })
+    }
+
     render() {
+
+        const { title, titleFocused } = this.state
+
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit}>
@@ -46,7 +68,21 @@ class CreateTodo extends Component {
                             <label htmlFor='fname'>Title</label>
                         </div>
                         <div className='col-75'>
-                            <input type='text' id='title' name='firstname' placeholder='Post Title..' ref={(input) => this.getTitle = input} />
+                            <input type='text'
+                                autoComplete="off"
+                                id='title'
+                                name='firstname'
+                                placeholder='Post Title..'
+                                onChange={this.handleTitleChange}
+                                ref={(input) => this.getTitle = input}
+                                className={`${!title && !titleFocused && 'title_valdiation'}`}
+                                onFocus={this.onFocusTitle}
+                                onBlur={this.onBlurTitle}
+                                autoFocus
+                            />
+                            {
+                                !title && !titleFocused && <p className='input_validaton_badge '>input text here</p>
+                            }
                         </div>
                     </div>
                     <div className='row'>

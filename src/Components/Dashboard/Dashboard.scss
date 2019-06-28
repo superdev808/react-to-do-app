@@ -1,0 +1,141 @@
+.data {
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+  font-size: 15px;
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: black;
+    max-width: 200px;
+    overflow: hidden;
+    width: 30%;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.finish {
+  text-decoration: line-through;
+}
+
+.del_button {
+  background-color: rgb(100, 200, 230);
+  color: white;
+  padding: 12px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.finish_button {
+  background-color: rgb(255, 100, 30);
+  color: white;
+  padding: 12px 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.create_button {
+  background-color: rgb(100, 30, 30);
+  color: white;
+  padding: 5px 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.filter {
+  margin-top: 20px;
+  display: inline-block;
+  button.active {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #4caf50;
+  }
+  button {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    width: 80px;
+    &:hover:not(.active) {
+      background-color: #ddd;
+    }
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}
+
+.checkContainer {
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked {
+      ~ .checkmark {
+        background-color: #2196f3;
+      }
+    }
+  }
+  &:hover {
+    input {
+      ~ .checkmark {
+        background-color: #777;
+      }
+    }
+  }
+  input:checked {
+    ~ .checkmark:after {
+      display: block;
+    }
+  }
+}
+
+/* Hide the browser's default checkbox */
+
+/* Create a custom checkbox */
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgb(63, 61, 61);
+  margin: auto;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+/* Style the checkmark/indicator */

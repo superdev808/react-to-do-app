@@ -10,7 +10,7 @@ import {
 import { getVisibleTodos } from '../../redux/selectors'
 import TodoRow from '../TodoRow/TodoRow'
 import TodoFilter from '../TodoFilter/TodoFilter'
-import './Dashboard.css'
+import './Dashboard.scss'
 
 class Dashboard extends Component {
 
@@ -45,7 +45,7 @@ class Dashboard extends Component {
                         <th>
                            <button className='create_button' onClick={this.handleNew} >
                               New
-                                    </button>
+                           </button>
                         </th>
                      </tr>
                   </thead>
