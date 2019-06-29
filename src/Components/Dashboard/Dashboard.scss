@@ -1,20 +1,22 @@
+@import "../../const";
 .data {
   border-collapse: collapse;
   width: 100%;
-  color: black;
+  color: $text-black-color;
   font-size: 15px;
+
   th,
   td {
     padding: 8px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
-    color: black;
+    border-bottom: 1px solid $button-noactive-color;
+    color: $text-black-color;
     max-width: 200px;
     overflow: hidden;
     width: 30%;
     a {
       text-decoration: none;
-      color: black;
+      color: $text-black-color;
     }
   }
 }
@@ -24,24 +26,24 @@
 }
 
 .del_button {
-  background-color: rgb(100, 200, 230);
-  color: white;
+  background-color: $button-light-blue-color;
+  color: $text-white-color;
   padding: 12px 15px;
   border: none;
   cursor: pointer;
 }
 
 .finish_button {
-  background-color: rgb(255, 100, 30);
-  color: white;
+  background-color: $button-orange-color;
+  color: $text-white-color;
   padding: 12px 5px;
   border: none;
   cursor: pointer;
 }
 
 .create_button {
-  background-color: rgb(100, 30, 30);
-  color: white;
+  background-color: $button-dark-red-color;
+  color: $text-white-color;
   padding: 5px 25px;
   border: none;
   cursor: pointer;
@@ -51,25 +53,30 @@
 .filter {
   margin-top: 20px;
   display: inline-block;
-  button.active {
-    background-color: #4caf50;
-    color: white;
-    border: 1px solid #4caf50;
-  }
+
   button {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid #ddd;
+    border: 1px solid $button-noactive-color;
     width: 80px;
-    &:hover:not(.active) {
-      background-color: #ddd;
+
+    &.active {
+      background-color: $button-active-color;
+      color: white;
+      border: 1px solid $button-active-color;
     }
+
+    &:hover:not(.active) {
+      background-color: $button-noactive-color;
+    }
+
     &:first-child {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
     }
+
     &:last-child {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
@@ -83,28 +90,30 @@
   cursor: pointer;
   font-size: 22px;
   user-select: none;
+
   input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
+
     &:checked {
       ~ .checkmark {
-        background-color: #2196f3;
+        background-color: $checkbox-checked-color;
+
+        &:after {
+          display: block;
+        }
       }
     }
   }
+
   &:hover {
     input {
       ~ .checkmark {
-        background-color: #777;
+        background-color: $checkbox-hover-color;
       }
-    }
-  }
-  input:checked {
-    ~ .checkmark:after {
-      display: block;
     }
   }
 }
@@ -119,8 +128,9 @@
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: rgb(63, 61, 61);
+  background-color: $checkbox-normal-color;
   margin: auto;
+
   &:after {
     content: "";
     position: absolute;
@@ -130,7 +140,7 @@
     top: 5px;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: solid $text-white-color;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);

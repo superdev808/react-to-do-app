@@ -23,8 +23,8 @@ const todoReducer = (state = initialState, action) => {
         case types.FINISH_TODO:
             {
                 let todos = state.todos
-                todos = todos.map((post) => {
-                    return post.id === action.id ? { ...post, finished: !post.finished } : post
+                todos = todos.map((todo) => {
+                    return todo.id === action.id ? { ...todo, finished: !todo.finished } : todo
                 })
 
                 return {
@@ -35,7 +35,7 @@ const todoReducer = (state = initialState, action) => {
         case types.DELETE_TODO:
             {
                 let todos = state.todos
-                todos = todos.filter((post) => post && post.id !== action.id)
+                todos = todos.filter((todo) => todo && todo.id !== action.id)
                 return {
                     ...state,
                     todos

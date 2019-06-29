@@ -1,3 +1,5 @@
+@import "../../const";
+
 * {
   box-sizing: border-box;
 }
@@ -7,23 +9,23 @@ select,
 textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid $button-noactive-color;
+  @include border-radius(4px);
   resize: vertical;
 }
 
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
-  color: black;
+  color: $text-black-color;
 }
 
 input[type="submit"] {
-  background-color: rgb(90, 95, 91);
+  background-color: $button-orange-color;
   color: white;
   padding: 12px 20px;
   border: none;
-  border-radius: 10px;
+  @include border-radius(10px);
   cursor: pointer;
   float: right;
   margin-right: 15px;
@@ -31,36 +33,35 @@ input[type="submit"] {
 
 input[type="submit"] {
   &:hover {
-    background-color: #a2b1a3;
+    background-color: $button-hover-color;
   }
 }
 
 .cancel_button {
-  background-color: rgb(230, 95, 90);
-  color: white;
+  background-color: $button-dark-red-color;
+  color: $text-white-color;
   padding: 12px 20px;
   border: none;
-  border-radius: 10px;
+  @include border-radius(10px);
   cursor: pointer;
   float: right;
   &:hover {
-    background-color: rgb(255, 135, 91);
-    color: white;
+    background-color: $button-hover-color;
+    color: $text-white-color;
     padding: 12px 20px;
     border: none;
-    border-radius: 10px;
     cursor: pointer;
     float: right;
   }
 }
 
 .title_valdiation {
-  border-bottom-color: red !important;
+  border-bottom-color: $validation-form-color !important;
   border-bottom-width: 2px !important;
 }
 
 .input_validaton_badge {
-  color: red;
+  color: $validation-form-color;
   text-align: left;
   font-size: 13px;
   padding-left: 5px;

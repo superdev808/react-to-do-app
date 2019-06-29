@@ -18,10 +18,9 @@ const TodoRow = ({ todo, handleFinish, handleDelete }) => {
         <td>
             <button className='del_button'
                 onClick={(e) => handleDelete(todo.id)}> delete
-                </button>
+            </button>
         </td>
     </tr >)
 }
-
 
 export default TodoRow

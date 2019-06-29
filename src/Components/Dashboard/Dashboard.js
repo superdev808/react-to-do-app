@@ -27,7 +27,7 @@ class Dashboard extends Component {
    }
 
    handleNew = (e) => {
-      this.props.history.push('/new')
+      this.props.history.push('/create')
    }
 
    render() {
