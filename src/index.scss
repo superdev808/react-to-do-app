@@ -1,4 +1,14 @@
-@import "./const";
+/*@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/grid";*/
+@import "./scss/variables.scss";
 
 body {
   margin: 0;
@@ -21,7 +31,7 @@ code {
     monospace;
 }
 
-.container {
+/*.container {
   width: 50%;
   min-width: 800px;
   @include border-radius(5px);
@@ -29,7 +39,7 @@ code {
   padding: 20px;
   margin: auto;
   box-shadow: 0 4px 8px 0 $box-shadow-color1, 0 6px 20px 0 $box-shadow-color2;
-}
+}*/
 
 .col-25 {
   float: left;
@@ -44,8 +54,6 @@ code {
   width: 75%;
   margin-top: 6px;
 }
-
-/* Clear floats after the columns */
 
 .row:after {
   content: "";

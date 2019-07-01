@@ -16,3 +16,10 @@ export const getVisibleTodos = createSelector(
         }
     }
 )
+
+export const getTodoById = (state, props) => {
+    const visibleTodos = getVisibleTodos(state)
+    console.log(props)
+    const findTodo = visibleTodos.find((todo) => (todo.id === Number.parseInt(props.todo.id)))
+    return findTodo
+}
