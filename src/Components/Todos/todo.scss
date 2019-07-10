@@ -12,29 +12,13 @@ textarea {
   border: 1px solid $button-noactive-color;
   @include border-radius(4px);
   resize: vertical;
+  font-size: 15px;
 }
 
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
+.label_type {
   color: $text-black-color;
-}
-
-input[type="submit"] {
-  background-color: $button-orange-color;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  @include border-radius(10px);
-  cursor: pointer;
-  float: right;
-  margin-right: 15px;
-}
-
-input[type="submit"] {
-  &:hover {
-    background-color: $button-hover-color;
-  }
+  font-size: 20px !important;
+  text-align: center;
 }
 
 .cancel_button {

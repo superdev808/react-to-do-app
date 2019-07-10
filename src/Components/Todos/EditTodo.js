@@ -27,13 +27,19 @@ class EditTodo extends Component {
             return
         }
 
-        const { todo, onSubmit } = this.props
+        const { todo, onSubmit, viewType } = this.props
 
-        onSubmit(this.getTitle.value, this.getContent.value, todo)
+        if (viewType === 'update' || viewType === 'new') {
+            onSubmit(this.getTitle.value, this.getContent.value, todo)
 
-        this.getContent.value = ''
-        this.getTitle.value = ''
-        this.props.history.push('/')
+            this.getContent.value = ''
+            this.getTitle.value = ''
+            this.props.history.push('/')
+        }
+        else {
+            const { id } = this.props.match.params
+            this.props.history.push('/' + id + '/update/')
+        }
     }
 
     onFocusTitle = () => {
@@ -45,14 +51,14 @@ class EditTodo extends Component {
     render() {
 
         const { title, titleFocused } = this.state
-        const { todo } = this.props
+        const { todo, viewType } = this.props
 
         return (
-            <div className='container card'>
+            <div className='container card' style={{ marginTop: '5%' }}>
                 <hr></hr>
                 <form onSubmit={this.handleSubmit}>
                     <div className='form-group row'>
-                        <label htmlFor='title' className='col-sm-2 col-form-label' > Title</label>
+                        <label htmlFor='title' className='col-sm-2 col-form-label label_type' > Title</label>
                         <div className='col-sm-10'>
                             <input type='text'
                                 autoComplete="off"
@@ -65,6 +71,7 @@ class EditTodo extends Component {
                                 onBlur={this.onBlurTitle}
                                 defaultValue={todo && todo.title}
                                 autoFocus
+                                readOnly={viewType === 'view'}
                             />
                             {
                                 !title && !titleFocused && <p className='input_validaton_badge '>input text here</p>
@@ -72,7 +79,7 @@ class EditTodo extends Component {
                         </div>
                     </div>
                     <div className='form-group row'>
-                        <label htmlFor='content' className='col-sm-2 col-form-label' > Content </label>
+                        <label htmlFor='content' className='col-sm-2 col-form-label label_type' > Content </label>
                         <div className='col-sm-10'>
                             <textarea id='content'
                                 name='content'
@@ -80,13 +87,16 @@ class EditTodo extends Component {
                                 className='form-control'
                                 style={{ height: '200px' }}
                                 ref={(input) => this.getContent = input}
-                                defaultValue={todo && todo.content}>
+                                defaultValue={todo && todo.content}
+                                readOnly={viewType === 'view'}
+                            >
                             </textarea>
                         </div>
                     </div>
                     <div className='row' style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <input type='submit' value={todo ? 'Update' : 'Add'} />
-                        <button className='cancel_button' onClick={this.handleCancel}> Cancel </button>
+                        <input type='submit' style={{ marginRight: '10px' }} className='col-1 btn btn-info'
+                            value={todo ? (viewType === 'view' ? 'Update' : 'OK') : 'Add'} />
+                        <button className='col-1 btn btn-dark' onClick={this.handleCancel}> Cancel </button>
                     </div>
                 </form>
             </div >

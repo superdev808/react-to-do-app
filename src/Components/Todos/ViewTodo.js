@@ -7,12 +7,10 @@ import EditTodo from './EditTodo'
 import { updateTodo } from '../../redux/actions/todo.action'
 import { getVisibleTodos } from '../../redux/selectors';
 
-const UpdateTodo = (props) => {
-
+const ViewTodo = (props) => {
     function getCurrentTodo() {
         const { visibleTodos } = props
         const { id } = props.match.params
-
         return visibleTodos.find((todo) => (todo.id === Number.parseInt(id)))
     }
 
@@ -25,7 +23,7 @@ const UpdateTodo = (props) => {
         })
     }
 
-    return <EditTodo todo={getCurrentTodo()} onSubmit={handleSubmit} viewType='update' />
+    return <EditTodo todo={getCurrentTodo()} onSubmit={handleSubmit} viewType={props.match.params.viewType} />
 }
 
 const mapStateToProps = (state) => {
@@ -40,4 +38,4 @@ const mapDispatchToProps = dispatch => ({
     }, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateTodo)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewTodo)

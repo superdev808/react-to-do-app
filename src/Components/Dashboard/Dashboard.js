@@ -38,7 +38,7 @@ class Dashboard extends Component {
             <div className='row justify-content-center'>
                <hr className='w-100'></hr>
                <div className='col-md-6 col-sm-3'>
-                  <button type='button' className='btn btn-success' onClick={this.handleNew} > New </button>
+                  <button type='button' className='btn btn-success float-right' onClick={this.handleNew} > New </button>
                </div>
                <hr className='w-100'></hr>
             </div>

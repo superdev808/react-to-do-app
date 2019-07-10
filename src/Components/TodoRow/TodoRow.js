@@ -8,7 +8,7 @@ const TodoRow = ({ todo, handleFinish, handleDelete }) => {
             <input type='checkbox' defaultChecked={todo.finished} onChange={(e) => handleFinish(todo.id)} />
         </td>
         <td>
-            <Link to={'/' + todo.id + '/update/'} className='navbar-brand'>
+            <Link to={'/' + todo.id + '/view'} className='navbar-brand'>
                 <span className={classNames({ 'finish': todo.finished })}>{todo.title}</span>
             </Link>
         </td>
