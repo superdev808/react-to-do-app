@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const todo_controller = require('../controller/todo.controller');
+const post_controller = require('../controller/post.controller')
 
-router.post('/new', todo_controller.newTodo);
+// a simple test url to check that all of our files are communicating correctly.
+router.post('/append', post_controller.append)
 
-module.exports = router;
+module.exports = router
