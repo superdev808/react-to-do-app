@@ -1,32 +1,31 @@
-import { /*applyMiddleware,*/ createStore } from 'redux';
-// import { createLogger } from 'redux-logger';
-//import createSagaMiddleware from 'redux-saga';
+import { applyMiddleware, createStore } from 'redux';
+import { createLogger } from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/todo.reducer';
 import { composeWithDevTools } from 'redux-devtools-extension'
-//import rootSaga from './sagas';
+import todoSagas from './sagas/todo.sagas';
 
-/*const logger = createLogger({
+const logger = createLogger({
     collapsed: true,
-});*/
+});
 
 export default function configureStore(initialState) {
-    //const sagaMiddleware = createSagaMiddleware();
+    const sagaMiddleware = createSagaMiddleware();
 
-    /*const getMiddleware = () => {
+    const getMiddleware = () => {
         if (process.env.NODE_ENV === 'development') {
             return applyMiddleware(sagaMiddleware, logger);
         }
         return applyMiddleware(sagaMiddleware);
-    };*/
+    };
 
     const store = createStore(
         reducers,
         initialState,
-        composeWithDevTools()
-        //getMiddleware(),
+        getMiddleware()
     );
 
-    //sagaMiddleware.run(rootSaga);
+    sagaMiddleware.run(todoSagas);
 
     return store;
 }

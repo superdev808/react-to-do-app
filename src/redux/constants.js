@@ -1,5 +1,18 @@
 export const ADD_TODO = 'ADD_TODO'
-export const FINISH_TODO = 'FINISH_TODO'
-export const DELETE_TODO = 'DELETE_TODO'
+export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
+export const ADD_TODO_FAIL = 'ADD_TODO_FAIL'
+
+export const READ_TODO = 'READ_TODO'
+export const READ_TODO_SUCCESS = 'READ_TODO_SUCCESS'
+export const READ_TODO_FAIL = 'READ_TODO_FAIL'
+
 export const UPDATE_TODO = 'UPDATE_TODO'
+export const UPDATE_TODO_SUCCESS = 'UPDATE_TODO_SUCCESS'
+export const UPDATE_TODO_FAIL = 'UPDATE_TODO_FAIL'
+
+export const DELETE_TODO = 'DELETE_TODO'
+export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
+export const DELETE_TODO_FAIL = 'DELETE_TODO_FAIL'
+
+export const FINISH_TODO = 'FINISH_TODO'
 export const SET_FILTER = 'SET_FILTER'

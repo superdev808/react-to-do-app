@@ -6,9 +6,7 @@ module.exports = {
         compress: true,
         port: 3000,
     },
-    entry: {
-        filename: './src/index.js'
-    },
+    entry: ['babel-polyfill', './src/index.js'],
     output: {
         filename: './bundle.js'
     },

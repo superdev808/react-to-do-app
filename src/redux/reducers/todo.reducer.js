@@ -11,14 +11,21 @@ const initialState = {
 
 const todoReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.ADD_TODO:
+        case types.ADD_TODO_SUCCESS:
             return {
                 ...state,
                 todos: state.todos.concat({
-                    ...action.data,
-                    id: state.curCnt
+                    ...action.data
                 }),
                 curCnt: state.curCnt + 1
+            }
+        case types.READ_TODO_SUCCESS:
+            {
+                return {
+                    ...state,
+                    todos: action.data,
+                    curCnt: action.data.length
+                }
             }
         case types.FINISH_TODO:
             {
@@ -32,18 +39,19 @@ const todoReducer = (state = initialState, action) => {
                     todos
                 }
             }
-        case types.DELETE_TODO:
+        case types.DELETE_TODO_SUCCESS:
             {
                 let todos = state.todos
-                todos = todos.filter((todo) => todo && todo.id !== action.id)
+                todos = todos.filter((todo) => todo && todo.id !== action.data.id)
                 return {
                     ...state,
                     todos
                 }
             }
-        case types.UPDATE_TODO:
+        case types.UPDATE_TODO_SUCCESS:
             {
                 let todos = state.todos
+                console.log(todos)
                 todos = todos.map((todo) => {
                     return todo.id === action.data.id ? {
                         ...todo,

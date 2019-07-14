@@ -18,7 +18,7 @@ class TodoFilter extends Component {
     render() {
         const { filter } = this.props
         return (
-            <div className='btn-group btn-group-toggle' role='group' data-toggle="buttons">
+            <div className='btn-group btn-group-toggle col-8' role='group' data-toggle="buttons">
                 <label className={classNames({ "btn btn-secondary": true, "active": filter === 'SHOW_ALL' })}>
                     <input type="radio" autoComplete="off" defaultChecked={filter === 'SHOW_ALL'} onClick={() => this.setVisibleType('SHOW_ALL')} /> All
                 </label>
