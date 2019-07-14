@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
+const db = require('../database/connection')
 
-module.exports = sequelize.define('todos', {
+module.exports = db.define('todos', {
     id: {
         type: Sequelize.INTEGER(11),
         allowNull: false,

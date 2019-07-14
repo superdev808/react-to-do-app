@@ -1,3 +1,4 @@
+const sequelize = require('./database/connection')
 module.exports = async () => {
     const Todo = require('./models/todos')
 

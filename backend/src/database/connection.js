@@ -6,4 +6,4 @@ const sequelize = new Sequelize('todoDatabase', 'root', '', {
 })
 
 module.exports = sequelize
-global.sequelize = sequelize
+// global.sequelize = sequelize
